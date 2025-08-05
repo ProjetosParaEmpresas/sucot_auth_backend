@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset" class="logo-icon">
+                <span class="logo-text">SUCOT ASSET</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Voltar ao Site</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="login-section">
+            <div class="login-container">
+                <div class="login-content">
+                    <div class="login-header">
+                        <div class="login-logo">
+                            <img src="assets/images/new_logo.png" alt="Sucot Asset" class="login-logo-img">
+                            <h1 class="login-title">SUCOT ASSET</h1>
+                        </div>
+                        <h2 class="login-subtitle">Acesse sua conta</h2>
+                        <p class="login-description">Entre com suas credenciais para acessar sua plataforma de investimentos</p>
+                    </div>
+
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">Senha</label>
+                            <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span class="checkmark"></span>
+                                Lembrar de mim
+                            </label>
+                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+
+                        <button type="submit" class="login-button">
+                            <span class="button-text">Entrar</span>
+                            <div class="button-loader" style="display: none;">
+                                <div class="spinner"></div>
+                            </div>
+                        </button>
+
+                        <div class="login-divider">
+                            <span>ou</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button type="button" class="social-button google-button">
+                                <svg class="social-icon" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                </svg>
+                                Continuar com Google
+                            </button>
+                        </div>
+
+                            <p class="signup-text">
+                        Não tem uma conta? <a href="register.html">Cadastre-se</a>
+                    </p></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="login-visual">
+                    <div class="chart-container">
+                        <canvas id="loginChart" width="500" height="350"></canvas>
+                        <div class="chart-overlay">
+                            <div class="stats-card">
+                                <h3>Seus Investimentos</h3>
+                                <div class="stat-item">
+                                    <span class="stat-label">Carteira Total</span>
+                                    <span class="stat-value positive">R$ 125.847,32</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Rendimento Mensal</span>
+                                    <span class="stat-value positive">+8.47%</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Ativos Ativos</span>
+                                    <span class="stat-value">12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="background-chart"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sucot Asset. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="login.js"></script>
+    <script>
+        // Verifica se já está logado ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            initLoginPage();
+        });
+    </script>
+</body>
+</html>
+

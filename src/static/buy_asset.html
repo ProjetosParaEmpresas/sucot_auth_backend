@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Ativos - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buy_asset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset" class="logo-icon">
+                <span class="logo-text">SUCOT ASSET</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="buy_asset.html" class="nav-link">Dashboard</a></li>
+                <li><a href="#" class="nav-link">Portfólio</a></li>
+                <li><a href="market.html" class="nav-link">Mercado</a></li>
+                <li><a href="deposit.html" class="nav-link">Depósito</a></li>
+                <li><a href="withdraw.html" class="nav-link">Saque</a></li>
+                <li><a href="transactions_status.html" class="nav-link">Status Transações</a></li>
+                <li><a href="approvals.html" class="nav-link admin-only" style="display: none;">Aprovações</a></li>
+                <li><a href="#" class="nav-link" onclick="logout()">Sair</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Dashboard Overview -->
+        <section class="dashboard-overview">
+            <div class="container">
+                <div class="welcome-section">
+                    <h1 class="welcome-title">Bem-vindo ao seu Dashboard</h1>
+                    <p class="welcome-subtitle">Gerencie seus investimentos e explore oportunidades no mercado</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <h3 class="stat-title">Saldo Total</h3>
+                            <p class="stat-value" id="totalBalance">R$ 125.847,32</p>
+                            <span class="stat-change positive">+8.47%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3 class="stat-title">Rendimento Hoje</h3>
+                            <p class="stat-value" id="todayReturn">R$ 2.847,12</p>
+                            <span class="stat-change positive">+2.31%</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-content">
+                            <h3 class="stat-title">Ativos Ativos</h3>
+                            <p class="stat-value" id="activeAssets">12</p>
+                            <span class="stat-change neutral">Diversificado</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <h3 class="stat-title">Disponível</h3>
+                            <p class="stat-value" id="availableBalance">R$ 45.230,18</p>
+                            <span class="stat-change neutral">Para investir</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trading Section -->
+        <section class="trading-section">
+            <div class="container">
+                <div class="trading-layout">
+                    <!-- Market Data -->
+                    <div class="market-panel">
+                        <h2 class="panel-title">Mercado em Tempo Real</h2>
+                        
+                        <div class="market-search">
+                            <input type="text" id="assetSearch" placeholder="Buscar ativo (ex: PETR4, VALE3)" class="search-input">
+                            <button class="search-btn">🔍</button>
+                        </div>
+
+                        <div class="market-list" id="marketList">
+                            <div class="market-item" data-symbol="PETR4">
+                                <div class="market-info">
+                                    <span class="market-symbol">PETR4</span>
+                                    <span class="market-name">Petrobras PN</span>
+                                </div>
+                                <div class="market-price">
+                                    <span class="price">R$ 32,45</span>
+                                    <span class="change positive">+1.23%</span>
+                                </div>
+                            </div>
+
+                            <div class="market-item" data-symbol="VALE3">
+                                <div class="market-info">
+                                    <span class="market-symbol">VALE3</span>
+                                    <span class="market-name">Vale ON</span>
+                                </div>
+                                <div class="market-price">
+                                    <span class="price">R$ 68,90</span>
+                                    <span class="change negative">-0.87%</span>
+                                </div>
+                            </div>
+
+                            <div class="market-item" data-symbol="ITUB4">
+                                <div class="market-info">
+                                    <span class="market-symbol">ITUB4</span>
+                                    <span class="market-name">Itaú Unibanco PN</span>
+                                </div>
+                                <div class="market-price">
+                                    <span class="price">R$ 28,76</span>
+                                    <span class="change positive">+2.15%</span>
+                                </div>
+                            </div>
+
+                            <div class="market-item" data-symbol="BBDC4">
+                                <div class="market-info">
+                                    <span class="market-symbol">BBDC4</span>
+                                    <span class="market-name">Bradesco PN</span>
+                                </div>
+                                <div class="market-price">
+                                    <span class="price">R$ 15,23</span>
+                                    <span class="change positive">+0.65%</span>
+                                </div>
+                            </div>
+
+                            <div class="market-item" data-symbol="ABEV3">
+                                <div class="market-info">
+                                    <span class="market-symbol">ABEV3</span>
+                                    <span class="market-name">Ambev ON</span>
+                                </div>
+                                <div class="market-price">
+                                    <span class="price">R$ 12,87</span>
+                                    <span class="change negative">-1.45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Form -->
+                    <div class="trading-panel">
+                        <h2 class="panel-title">Comprar Ativo</h2>
+                        
+                        <form class="trading-form" id="tradingForm">
+                            <div class="form-group">
+                                <label for="selectedAsset" class="form-label">Ativo Selecionado</label>
+                                <input type="text" id="selectedAsset" class="form-input" placeholder="Selecione um ativo" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assetPrice" class="form-label">Preço Atual</label>
+                                <input type="text" id="assetPrice" class="form-input" placeholder="R$ 0,00" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantity" class="form-label">Quantidade</label>
+                                <input type="number" id="quantity" class="form-input" placeholder="100" min="1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orderType" class="form-label">Tipo de Ordem</label>
+                                <select id="orderType" class="form-select">
+                                    <option value="market">Mercado</option>
+                                    <option value="limit">Limitada</option>
+                                    <option value="stop">Stop Loss</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="limitPriceGroup" style="display: none;">
+                                <label for="limitPrice" class="form-label">Preço Limite</label>
+                                <input type="number" id="limitPrice" class="form-input" placeholder="0.00" step="0.01">
+                            </div>
+
+                            <div class="order-summary">
+                                <div class="summary-row">
+                                    <span>Quantidade:</span>
+                                    <span id="summaryQuantity">0</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Preço Unitário:</span>
+                                    <span id="summaryPrice">R$ 0,00</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Taxa de Corretagem:</span>
+                                    <span id="summaryFee">R$ 9,90</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Total:</span>
+                                    <span id="summaryTotal">R$ 0,00</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="buy-button">
+                                <span class="button-text">Comprar Ativo</span>
+                                <div class="button-loader" style="display: none;">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Chart Panel -->
+                    <div class="chart-panel">
+                        <h2 class="panel-title">Gráfico do Ativo</h2>
+                        <div class="chart-container">
+                            <canvas id="assetChart" width="400" height="300"></canvas>
+                            <div class="chart-placeholder" id="chartPlaceholder">
+                                <div class="placeholder-icon">📊</div>
+                                <p>Selecione um ativo para ver o gráfico</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio-section" id="portfolio">
+            <div class="container">
+                <h2 class="section-title">Meu Portfólio</h2>
+                
+                <div class="portfolio-table">
+                    <div class="table-header">
+                        <div class="table-cell">Ativo</div>
+                        <div class="table-cell">Quantidade</div>
+                        <div class="table-cell">Preço Médio</div>
+                        <div class="table-cell">Preço Atual</div>
+                        <div class="table-cell">Variação</div>
+                        <div class="table-cell">Total</div>
+                    </div>
+                    
+                    <div class="table-body" id="portfolioBody">
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <div class="asset-info">
+                                    <span class="asset-symbol">PETR4</span>
+                                    <span class="asset-name">Petrobras PN</span>
+                                </div>
+                            </div>
+                            <div class="table-cell">200</div>
+                            <div class="table-cell">R$ 31,20</div>
+                            <div class="table-cell">R$ 32,45</div>
+                            <div class="table-cell positive">+4,01%</div>
+                            <div class="table-cell">R$ 6.490,00</div>
+                        </div>
+
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <div class="asset-info">
+                                    <span class="asset-symbol">VALE3</span>
+                                    <span class="asset-name">Vale ON</span>
+                                </div>
+                            </div>
+                            <div class="table-cell">100</div>
+                            <div class="table-cell">R$ 70,15</div>
+                            <div class="table-cell">R$ 68,90</div>
+                            <div class="table-cell negative">-1,78%</div>
+                            <div class="table-cell">R$ 6.890,00</div>
+                        </div>
+
+                        <div class="table-row">
+                            <div class="table-cell">
+                                <div class="asset-info">
+                                    <span class="asset-symbol">ITUB4</span>
+                                    <span class="asset-name">Itaú Unibanco PN</span>
+                                </div>
+                            </div>
+                            <div class="table-cell">300</div>
+                            <div class="table-cell">R$ 27,80</div>
+                            <div class="table-cell">R$ 28,76</div>
+                            <div class="table-cell positive">+3,45%</div>
+                            <div class="table-cell">R$ 8.628,00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sucot Asset. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="buy_asset.js"></script>
+    <script>
+        // Verifica autenticação ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            initAuthenticatedPage();
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depósito - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="deposit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset" class="logo-icon">
+                <span class="logo-text">SUCOT ASSET</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="buy_asset.html" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link">Portfólio</a>
+                <a href="market.html" class="nav-link">Mercado</a>
+                <a href="deposit.html" class="nav-link active">Depósito</a>
+                <a href="withdraw.html" class="nav-link">Saque</a>
+                <a href="transactions_status.html" class="nav-link">Status Transações</a>
+                <a href="approvals.html" class="nav-link admin-only" style="display: none;">Aprovações</a>
+                <a href="#" class="nav-link" onclick="logout()">Sair</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="deposit-header">
+                <h1 class="page-title">💰 Realizar Depósito</h1>
+                <p class="page-subtitle">Adicione fundos à sua conta de forma rápida e segura</p>
+            </div>
+
+            <div class="deposit-content">
+                <div class="payment-methods">
+                    <h2>Escolha o método de pagamento</h2>
+                    
+                    <div class="method-cards">
+                        <div class="method-card active" data-method="pix">
+                            <div class="method-icon">
+                                <img src="assets/images/pix_logo.png" alt="PIX" class="pix-logo">
+                            </div>
+                            <div class="method-info">
+                                <h3>PIX</h3>
+                                <p>Transferência instantânea</p>
+                                <span class="method-time">Disponível em segundos</span>
+                            </div>
+                            <div class="method-badge">Recomendado</div>
+                        </div>
+
+                        <div class="method-card" data-method="card">
+                            <div class="method-icon">
+                                <img src="assets/images/cartoes_aceitos.png" alt="Cartões" class="cards-logo">
+                            </div>
+                            <div class="method-info">
+                                <h3>Cartão de Crédito</h3>
+                                <p>Visa, Mastercard, Elo</p>
+                                <span class="method-time">Disponível em até 2 dias úteis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deposit-form-container">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h3 id="form-title">Depósito via PIX</h3>
+                            <div class="security-badge">
+                                <img src="assets/images/shield_icon.png" alt="Seguro" class="shield-icon">
+                                <span>100% Seguro</span>
+                            </div>
+                        </div>
+
+                        <form id="deposit-form">
+                            <div class="form-group">
+                                <label for="amount">Valor do Depósito</label>
+                                <div class="amount-input">
+                                    <span class="currency">R$</span>
+                                    <input type="number" id="amount" name="amount" step="0.01" min="1" placeholder="0,00" required>
+                                </div>
+                                <div class="amount-suggestions">
+                                    <button type="button" class="amount-btn" data-amount="100">R$ 100</button>
+                                    <button type="button" class="amount-btn" data-amount="500">R$ 500</button>
+                                    <button type="button" class="amount-btn" data-amount="1000">R$ 1.000</button>
+                                    <button type="button" class="amount-btn" data-amount="5000">R$ 5.000</button>
+                                </div>
+                            </div>
+
+                            <!-- PIX Form -->
+                            <div id="pix-form" class="payment-form active">
+                                <div class="pix-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Taxa:</span>
+                                        <span class="info-value">Gratuito</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Tempo:</span>
+                                        <span class="info-value">Instantâneo</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Limite:</span>
+                                        <span class="info-value">R$ 50.000/dia</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card Form -->
+                            <div id="card-form" class="payment-form">
+                                <div class="form-group">
+                                    <label for="card-number">Número do Cartão</label>
+                                    <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-expiry">Validade</label>
+                                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card-cvv">CVV</label>
+                                        <input type="text" id="card-cvv" placeholder="000" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-name">Nome no Cartão</label>
+                                    <input type="text" id="card-name" placeholder="Nome como está no cartão">
+                                </div>
+                                <div class="card-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Taxa:</span>
+                                        <span class="info-value">2,99%</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Tempo:</span>
+                                        <span class="info-value">Até 2 dias úteis</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-summary">
+                                <div class="summary-row">
+                                    <span>Valor do depósito:</span>
+                                    <span id="deposit-amount">R$ 0,00</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Taxa:</span>
+                                    <span id="fee-amount">Gratuito</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Total a pagar:</span>
+                                    <span id="total-amount">R$ 0,00</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-deposit">
+                                <span id="btn-text">Depositar via PIX</span>
+                                <div class="btn-loading" style="display: none;">
+                                    <div class="spinner"></div>
+                                    Processando...
+                                </div>
+                            </button>
+                        </form>
+
+                        <div id="message" class="message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="deposit.js"></script>
+</body>
+</html>
+

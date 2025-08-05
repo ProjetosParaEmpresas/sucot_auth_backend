@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucot Asset - Investimentos & Produtos Financeiros</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset" class="logo-icon">
+                <span class="logo-text">SUCOT ASSET</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Início</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="market.html" class="nav-link">Mercado</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Investimentos &<br>
+                        Produtos<br>
+                        Financeiros
+                    </h1>
+                    <p class="hero-subtitle">
+                        Descubra uma variedade de soluções financeiras e oportunidades de investimento para ajudar você a alcançar seus objetivos financeiros
+                    </p>
+                    <button class="cta-button">Comece Agora</button>
+                </div>
+                <div class="hero-visual">
+                    <div class="chart-container">
+                        <canvas id="financialChart" width="600" height="400"></canvas>
+                        <div class="chart-overlay">
+                            <div class="price-indicator">
+                                <span class="price-value">1,058.07</span>
+                                <span class="price-change positive">+2.34%</span>
+                            </div>
+                            <div class="price-indicator">
+                                <span class="price-value">2,019.62</span>
+                                <span class="price-change positive">+1.87%</span>
+                            </div>
+                            <div class="price-indicator">
+                                <span class="price-value">1,479.24</span>
+                                <span class="price-change negative">-0.45%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="background-chart"></div>
+        </section>
+
+        <section class="features" id="sobre">
+            <div class="container">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Análise de Mercado</h3>
+                        <p>Relatórios detalhados e análises profissionais do mercado financeiro</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💼</div>
+                        <h3>Gestão de Portfólio</h3>
+                        <p>Estratégias personalizadas para otimizar seus investimentos</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Segurança</h3>
+                        <p>Proteção avançada para seus ativos e informações financeiras</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contato">
+            <div class="container">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Fale Conosco</h3>
+                        <p>Estamos prontos para ajudar você a alcançar seus objetivos financeiros.</p>
+                        <div class="contact-item">
+                            <span class="contact-label">Email:</span>
+                            <span>contato@sucotasset.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Telefone:</span>
+                            <span>+55 (11) 9999-9999</span>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Seu nome" required>
+                        <input type="email" placeholder="Seu email" required>
+                        <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+                        <button type="submit" class="submit-button">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sucot Asset. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

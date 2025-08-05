@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="market.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset" class="logo-icon">
+                <span class="logo-text">SUCOT ASSET</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="buy_asset.html" class="nav-link">Dashboard</a></li>
+                <li><a href="#" class="nav-link">Portfólio</a></li>
+                <li><a href="market.html" class="nav-link">Mercado</a></li>
+                <li><a href="deposit.html" class="nav-link">Depósito</a></li>
+                <li><a href="withdraw.html" class="nav-link">Saque</a></li>
+                <li><a href="transactions_status.html" class="nav-link">Status Transações</a></li>
+                <li><a href="approvals.html" class="nav-link admin-only" style="display: none;">Aprovações</a></li>
+                <li><a href="#" class="nav-link" onclick="logout()">Sair</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Market Header -->
+        <section class="market-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="title-section">
+                        <h1 class="page-title">Mercado</h1>
+                        <p class="page-subtitle">Visualização em tempo real dos ativos da bolsa brasileira</p>
+                    </div>
+                    
+                    <div class="market-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">IBOVESPA</span>
+                            <span class="stat-value" id="ibovespa">126.847</span>
+                            <span class="stat-change positive" id="ibovespaChange">+1.23%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Volume</span>
+                            <span class="stat-value" id="volume">R$ 18,4B</span>
+                            <span class="stat-change neutral">hoje</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Ativos</span>
+                            <span class="stat-value" id="activeAssets">347</span>
+                            <span class="stat-change neutral">em alta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="market-controls">
+                    <div class="search-container">
+                        <input type="text" id="marketSearch" placeholder="Buscar ativo..." class="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    
+                    <div class="filter-container">
+                        <select id="sectorFilter" class="filter-select">
+                            <option value="all">Todos os Setores</option>
+                            <option value="financeiro">Financeiro</option>
+                            <option value="petroleo">Petróleo e Gás</option>
+                            <option value="mineracao">Mineração</option>
+                            <option value="varejo">Varejo</option>
+                            <option value="tecnologia">Tecnologia</option>
+                        </select>
+                        
+                        <select id="sortFilter" class="filter-select">
+                            <option value="volume">Ordenar por Volume</option>
+                            <option value="variation">Ordenar por Variação</option>
+                            <option value="price">Ordenar por Preço</option>
+                            <option value="alphabetical">Ordenar A-Z</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Treemap Section -->
+        <section class="treemap-section">
+            <div class="container">
+                <div class="treemap-container" id="treemapContainer">
+                    <!-- Os blocos do treemap serão gerados dinamicamente pelo JavaScript -->
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-title">Legenda</div>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color positive-strong"></div>
+                            <span>+5% ou mais</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color positive-medium"></div>
+                            <span>+2% a +5%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color positive-light"></div>
+                            <span>0% a +2%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color neutral"></div>
+                            <span>0%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color negative-light"></div>
+                            <span>0% a -2%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color negative-medium"></div>
+                            <span>-2% a -5%</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color negative-strong"></div>
+                            <span>-5% ou menos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asset Details Modal -->
+        <div class="asset-modal" id="assetModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">PETR4</h3>
+                    <button class="modal-close" id="modalClose">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="asset-info">
+                        <div class="info-row">
+                            <span class="info-label">Nome:</span>
+                            <span class="info-value" id="modalName">Petrobras PN</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Preço Atual:</span>
+                            <span class="info-value" id="modalPrice">R$ 32,45</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Variação:</span>
+                            <span class="info-value" id="modalChange">+1,23%</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Volume:</span>
+                            <span class="info-value" id="modalVolume">1,22B</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Setor:</span>
+                            <span class="info-value" id="modalSector">Petróleo e Gás</span>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" id="buyAssetBtn">Comprar Ativo</button>
+                        <button class="btn-secondary" id="addWatchlistBtn">Adicionar à Lista</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sucot Asset. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="market.js"></script>
+    <script>
+        // Verifica autenticação ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            initAuthenticatedPage();
+        });
+    </script>
+</body>
+</html>
+

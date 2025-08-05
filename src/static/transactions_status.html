@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status das Transações - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="transactions_status.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset Logo">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="buy_asset.html">Dashboard</a></li>
+                    <li><a href="market.html">Mercado</a></li>
+                    <li><a href="deposit.html">Depósito</a></li>
+                    <li><a href="withdraw.html">Saque</a></li>
+                    <li><a href="transactions_status.html" class="active">Status Transações</a></li>
+                    <li><a href="approvals.html">Aprovações (Admin)</a></li>
+                    <li><a href="#" id="logout-button">Sair</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <h1>Status das Transações</h1>
+            </header>
+            <section class="transactions-section">
+                <div class="card">
+                    <h2>Minhas Transações</h2>
+                    <div class="filter-section">
+                        <select id="status-filter">
+                            <option value="">Todos os Status</option>
+                            <option value="pending">Pendente</option>
+                            <option value="approved">Aprovado</option>
+                            <option value="rejected">Rejeitado</option>
+                        </select>
+                        <select id="type-filter">
+                            <option value="">Todos os Tipos</option>
+                            <option value="deposit">Depósito</option>
+                            <option value="withdrawal">Saque</option>
+                        </select>
+                    </div>
+                    <div class="transactions-list" id="transactions-list">
+                        <div class="loading">Carregando transações...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="auth.js"></script>
+    <script src="transactions_status.js"></script>
+</body>
+</html>
+

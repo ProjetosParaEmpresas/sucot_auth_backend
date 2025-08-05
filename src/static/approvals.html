@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovações - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="approvals.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="assets/images/new_logo.png" alt="Sucot Asset Logo">
+                    <span>SUCOT ASSET</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Início</a>
+                    <a href="buy_asset.html" class="nav-link">Dashboard</a>
+                    <a href="market.html" class="nav-link">Mercado</a>
+                    <a href="approvals.html" class="nav-link active">Aprovações</a>
+                    <a href="#" class="nav-link" onclick="logout()">Sair</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="approvals-main">
+        <div class="approvals-container">
+            <div class="approvals-header">
+                <h1>🔍 Aprovações de Usuários</h1>
+                <p>Gerencie as solicitações de cadastro de novos usuários</p>
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <span class="stat-number" id="pendingCount">0</span>
+                        <span class="stat-label">Pendentes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="approvedCount">0</span>
+                        <span class="stat-label">Aprovados</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="rejectedCount">0</span>
+                        <span class="stat-label">Rejeitados</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label for="statusFilter">Filtrar por Status:</label>
+                    <select id="statusFilter">
+                        <option value="all">Todos</option>
+                        <option value="pending">Pendentes</option>
+                        <option value="approved">Aprovados</option>
+                        <option value="rejected">Rejeitados</option>
+                    </select>
+                </div>
+                <button class="refresh-btn" onclick="loadUsers()">
+                    🔄 Atualizar
+                </button>
+            </div>
+
+            <div class="users-section">
+                <div id="loadingIndicator" class="loading">
+                    <div class="spinner"></div>
+                    <span>Carregando usuários...</span>
+                </div>
+                <div id="usersContainer" class="users-grid" style="display: none;">
+                    <!-- Users will be loaded here -->
+                </div>
+                <div id="noUsersMessage" class="no-users" style="display: none;">
+                    <p>Nenhum usuário encontrado.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for user details -->
+        <div id="userModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Detalhes do Usuário</h2>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- User details will be loaded here -->
+                </div>
+                <div class="modal-actions" id="modalActions">
+                    <!-- Action buttons will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="approvals.js"></script>
+</body>
+</html>
+
+
+
+            <div class="approvals-header">
+                <h1>💰 Aprovações de Transações</h1>
+                <p>Gerencie as solicitações de depósito e saque</p>
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <span class="stat-number" id="pendingTransactionsCount">0</span>
+                        <span class="stat-label">Transações Pendentes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="approvedTransactionsCount">0</span>
+                        <span class="stat-label">Transações Aprovadas</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="rejectedTransactionsCount">0</span>
+                        <span class="stat-label">Transações Rejeitadas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <select id="transaction-status-filter">
+                    <option value="">Todos os Status</option>
+                    <option value="pending">Pendente</option>
+                    <option value="approved">Aprovado</option>
+                    <option value="rejected">Rejeitado</option>
+                </select>
+                <select id="transaction-type-filter">
+                    <option value="">Todos os Tipos</option>
+                    <option value="deposit">Depósito</option>
+                    <option value="withdrawal">Saque</option>
+                </select>
+            </div>
+
+            <div class="users-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID Transação</th>
+                            <th>Usuário (Email)</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Data Solicitação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions-table-body">
+                        <!-- Transactions will be loaded here -->
+                    </tbody>
+                </table>
+                <div id="no-transactions-message" class="no-records" style="display: none;">Nenhuma transação encontrada.</div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Modal de Detalhes do Usuário (manter o existente) -->
+    <div id="userDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Detalhes do Usuário</h2>
+            <div id="modal-body-content"></div>
+            <div class="modal-actions">
+                <button id="approveUserBtn" class="btn-approve">Aprovar</button>
+                <button id="rejectUserBtn" class="btn-reject">Rejeitar</button>
+                <button id="deleteUserBtn" class="btn-delete">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="approvals.js"></script>
+</body>
+</html>
+
+

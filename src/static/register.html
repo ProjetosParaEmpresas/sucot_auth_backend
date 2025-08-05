@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="assets/images/new_logo.png" alt="Sucot Asset Logo">
+                    <span>SUCOT ASSET</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Início</a>
+                    <a href="index.html#about" class="nav-link">Sobre</a>
+                    <a href="market.html" class="nav-link">Mercado</a>
+                    <a href="index.html#contact" class="nav-link">Contato</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="register-main">
+        <div class="register-container">
+            <div class="register-header">
+                <div class="logo-section">
+                    <img src="assets/images/new_logo.png" alt="Sucot Asset Logo">
+                    <h1>SUCOT ASSET</h1>
+                </div>
+                <h2>Cadastro de Nova Conta</h2>
+                <p>Preencha todos os campos para criar sua conta de investimentos</p>
+            </div>
+
+            <form id="registerForm" class="register-form">
+                <!-- Seção 1: Dados Pessoais -->
+                <div class="form-section">
+                    <h3>📋 Dados Pessoais</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Data de Nascimento *</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Gênero</label>
+                            <select id="gender" name="gender">
+                                <option value="">Selecione</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outro">Outro</option>
+                                <option value="nao_informar">Prefiro não informar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">Nacionalidade *</label>
+                            <input type="text" id="nationality" name="nationality" value="Brasileira" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="naturalness">Naturalidade *</label>
+                            <input type="text" id="naturalness" name="naturalness" placeholder="Ex: São Paulo, SP" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 2: Documentos -->
+                <div class="form-section">
+                    <h3>🪪 Documentos de Identificação</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cpf">CPF *</label>
+                            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rgCnhFront">RG ou CNH (Frente) *</label>
+                            <input type="file" id="rgCnhFront" name="rgCnhFront" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rgCnhBack">RG ou CNH (Verso) *</label>
+                            <input type="file" id="rgCnhBack" name="rgCnhBack" accept="image/*" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="selfieWithDoc">Selfie segurando o documento *</label>
+                            <input type="file" id="selfieWithDoc" name="selfieWithDoc" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="proofOfResidence">Comprovante de residência *</label>
+                            <input type="file" id="proofOfResidence" name="proofOfResidence" accept="image/*,application/pdf" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 3: Informações Financeiras -->
+                <div class="form-section">
+                    <h3>🏦 Informações Financeiras</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="occupation">Ocupação/Profissão *</label>
+                            <input type="text" id="occupation" name="occupation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyName">Nome da Empresa</label>
+                            <input type="text" id="companyName" name="companyName">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="monthlyIncome">Renda Mensal (R$) *</label>
+                            <input type="number" id="monthlyIncome" name="monthlyIncome" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estimatedWealth">Patrimônio Estimado (R$)</label>
+                            <input type="number" id="estimatedWealth" name="estimatedWealth" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sourceOfIncome">Fonte da Renda *</label>
+                            <select id="sourceOfIncome" name="sourceOfIncome" required>
+                                <option value="">Selecione</option>
+                                <option value="salario">Salário</option>
+                                <option value="autonomo">Trabalho Autônomo</option>
+                                <option value="empresa_propria">Empresa Própria</option>
+                                <option value="investimentos">Investimentos</option>
+                                <option value="aposentadoria">Aposentadoria</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="licitResourcesDeclaration" name="licitResourcesDeclaration" required>
+                                Declaro que os recursos são de origem lícita *
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 4: Informações Bancárias -->
+                <div class="form-section">
+                    <h3>💳 Informações Bancárias</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bankName">Banco *</label>
+                            <input type="text" id="bankName" name="bankName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bankAgency">Agência *</label>
+                            <input type="text" id="bankAgency" name="bankAgency" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bankAccount">Conta *</label>
+                            <input type="text" id="bankAccount" name="bankAccount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="accountType">Tipo de Conta *</label>
+                            <select id="accountType" name="accountType" required>
+                                <option value="">Selecione</option>
+                                <option value="corrente">Conta Corrente</option>
+                                <option value="poupanca">Conta Poupança</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="accountOwnership">Titularidade *</label>
+                            <select id="accountOwnership" name="accountOwnership" required>
+                                <option value="">Selecione</option>
+                                <option value="propria">Própria</option>
+                                <option value="terceiros">Terceiros</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 5: Dados de Login -->
+                <div class="form-section">
+                    <h3>🔐 Dados de Login</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Senha *</label>
+                            <input type="password" id="password" name="password" required>
+                            <small>Mínimo 8 caracteres, incluindo letras e números</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Senha *</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 6: Perfil do Investidor -->
+                <div class="form-section">
+                    <h3>📈 Perfil do Investidor</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="investmentObjective">Objetivo do Investimento *</label>
+                            <select id="investmentObjective" name="investmentObjective" required>
+                                <option value="">Selecione</option>
+                                <option value="curto_prazo">Curto Prazo (até 1 ano)</option>
+                                <option value="medio_prazo">Médio Prazo (1 a 5 anos)</option>
+                                <option value="longo_prazo">Longo Prazo (mais de 5 anos)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="riskTolerance">Tolerância ao Risco *</label>
+                            <select id="riskTolerance" name="riskTolerance" required>
+                                <option value="">Selecione</option>
+                                <option value="baixo">Baixo</option>
+                                <option value="medio">Médio</option>
+                                <option value="alto">Alto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="investmentKnowledge">Conhecimento em Investimentos *</label>
+                            <select id="investmentKnowledge" name="investmentKnowledge" required>
+                                <option value="">Selecione</option>
+                                <option value="iniciante">Iniciante</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tipos de investimentos já utilizados:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="investmentTypes" value="acoes"> Ações</label>
+                                <label><input type="checkbox" name="investmentTypes" value="cdb"> CDB</label>
+                                <label><input type="checkbox" name="investmentTypes" value="fundos"> Fundos de Investimento</label>
+                                <label><input type="checkbox" name="investmentTypes" value="tesouro"> Tesouro Direto</label>
+                                <label><input type="checkbox" name="investmentTypes" value="lci_lca"> LCI/LCA</label>
+                                <label><input type="checkbox" name="investmentTypes" value="outros"> Outros</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção 7: Termos e Consentimentos -->
+                <div class="form-section">
+                    <h3>⚠️ Termos e Consentimentos</h3>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="termsOfUse" name="termsOfUse" required>
+                                Li e aceito os <a href="#" target="_blank">Termos de Uso</a> *
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
+                                Li e aceito a <a href="#" target="_blank">Política de Privacidade</a> *
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="lgpdConsent" name="lgpdConsent" required>
+                                Autorizo o tratamento dos meus dados pessoais conforme a LGPD *
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="marketingConsent" name="marketingConsent">
+                                Autorizo o envio de comunicações de marketing
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Enviar Cadastro</span>
+                        <div class="btn-loader" style="display: none;">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                    <p class="login-link">
+                        Já tem uma conta? <a href="login.html">Faça login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>
+

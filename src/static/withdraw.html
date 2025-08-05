@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saque - Sucot Asset</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="withdraw.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="assets/images/new_logo.png" alt="Sucot Asset" class="logo-icon">
+                <span class="logo-text">SUCOT ASSET</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="buy_asset.html" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link">Portfólio</a>
+                <a href="market.html" class="nav-link">Mercado</a>
+                <a href="deposit.html" class="nav-link">Depósito</a>
+                <a href="withdraw.html" class="nav-link active">Saque</a>
+                <a href="transactions_status.html" class="nav-link">Status Transações</a>
+                <a href="approvals.html" class="nav-link admin-only" style="display: none;">Aprovações</a>
+                <a href="#" class="nav-link" onclick="logout()">Sair</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="withdraw-header">
+                <h1 class="page-title">💸 Realizar Saque</h1>
+                <p class="page-subtitle">Transfira seus fundos de forma rápida e segura</p>
+            </div>
+
+            <div class="withdraw-content">
+                <div class="balance-info">
+                    <div class="balance-card">
+                        <div class="balance-header">
+                            <h3>💰 Saldo Disponível</h3>
+                            <div class="security-badge">
+                                <img src="assets/images/shield_icon.png" alt="Seguro" class="shield-icon">
+                                <span>Protegido</span>
+                            </div>
+                        </div>
+                        <div class="balance-amount">
+                            <span class="currency">R$</span>
+                            <span class="amount" id="available-balance">45.230,18</span>
+                        </div>
+                        <div class="balance-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Saldo Total:</span>
+                                <span class="detail-value">R$ 125.847,32</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Investido:</span>
+                                <span class="detail-value">R$ 80.617,14</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Disponível:</span>
+                                <span class="detail-value highlight">R$ 45.230,18</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="withdraw-methods">
+                        <h3>Métodos de Saque</h3>
+                        <div class="method-item">
+                            <img src="assets/images/pix_logo.png" alt="PIX" class="method-icon">
+                            <div class="method-info">
+                                <h4>PIX</h4>
+                                <p>Transferência instantânea</p>
+                            </div>
+                            <div class="method-status available">Disponível</div>
+                        </div>
+                        <div class="method-item">
+                            <div class="bank-icon">🏦</div>
+                            <div class="method-info">
+                                <h4>Transferência Bancária</h4>
+                                <p>TED - Até 1 dia útil</p>
+                            </div>
+                            <div class="method-status available">Disponível</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="withdraw-form-container">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h3>Solicitar Saque</h3>
+                            <div class="form-steps">
+                                <div class="step active">1</div>
+                                <div class="step-line"></div>
+                                <div class="step">2</div>
+                                <div class="step-line"></div>
+                                <div class="step">3</div>
+                            </div>
+                        </div>
+
+                        <form id="withdraw-form">
+                            <!-- Step 1: Amount -->
+                            <div class="form-step active" data-step="1">
+                                <h4>💰 Valor do Saque</h4>
+                                <div class="form-group">
+                                    <label for="amount">Quanto você deseja sacar?</label>
+                                    <div class="amount-input">
+                                        <span class="currency">R$</span>
+                                        <input type="number" id="amount" name="amount" step="0.01" min="1" placeholder="0,00" required>
+                                    </div>
+                                    <div class="amount-suggestions">
+                                        <button type="button" class="amount-btn" data-amount="1000">R$ 1.000</button>
+                                        <button type="button" class="amount-btn" data-amount="5000">R$ 5.000</button>
+                                        <button type="button" class="amount-btn" data-amount="10000">R$ 10.000</button>
+                                        <button type="button" class="amount-btn" data-amount="all">Tudo</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Method -->
+                            <div class="form-step" data-step="2">
+                                <h4>🏦 Método de Saque</h4>
+                                <div class="method-selection">
+                                    <div class="method-option active" data-method="pix">
+                                        <div class="method-radio">
+                                            <input type="radio" name="method" value="pix" checked>
+                                            <span class="radio-custom"></span>
+                                        </div>
+                                        <img src="assets/images/pix_logo.png" alt="PIX" class="method-logo">
+                                        <div class="method-details">
+                                            <h5>PIX</h5>
+                                            <p>Transferência instantânea</p>
+                                            <span class="method-fee">Taxa: Gratuito</span>
+                                        </div>
+                                    </div>
+                                    <div class="method-option" data-method="ted">
+                                        <div class="method-radio">
+                                            <input type="radio" name="method" value="ted">
+                                            <span class="radio-custom"></span>
+                                        </div>
+                                        <div class="bank-icon-large">🏦</div>
+                                        <div class="method-details">
+                                            <h5>TED</h5>
+                                            <p>Transferência bancária</p>
+                                            <span class="method-fee">Taxa: R$ 15,00</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PIX Details -->
+                                <div id="pix-details" class="method-form active">
+                                    <div class="form-group">
+                                        <label for="pix-key">Chave PIX</label>
+                                        <select id="pix-key-type">
+                                            <option value="cpf">CPF</option>
+                                            <option value="email">E-mail</option>
+                                            <option value="phone">Telefone</option>
+                                            <option value="random">Chave Aleatória</option>
+                                        </select>
+                                        <input type="text" id="pix-key" placeholder="Digite sua chave PIX" required>
+                                    </div>
+                                </div>
+
+                                <!-- TED Details -->
+                                <div id="ted-details" class="method-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="bank">Banco</label>
+                                            <input type="text" id="bank" placeholder="Nome do banco">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="agency">Agência</label>
+                                            <input type="text" id="agency" placeholder="0000">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="account">Conta</label>
+                                            <input type="text" id="account" placeholder="00000-0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="account-type">Tipo</label>
+                                            <select id="account-type">
+                                                <option value="checking">Corrente</option>
+                                                <option value="savings">Poupança</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Confirmation -->
+                            <div class="form-step" data-step="3">
+                                <h4>✅ Confirmação</h4>
+                                <div class="confirmation-summary">
+                                    <div class="summary-item">
+                                        <span class="summary-label">Valor do saque:</span>
+                                        <span class="summary-value" id="confirm-amount">R$ 0,00</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Método:</span>
+                                        <span class="summary-value" id="confirm-method">PIX</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Destino:</span>
+                                        <span class="summary-value" id="confirm-destination">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Taxa:</span>
+                                        <span class="summary-value" id="confirm-fee">Gratuito</span>
+                                    </div>
+                                    <div class="summary-item total">
+                                        <span class="summary-label">Valor líquido:</span>
+                                        <span class="summary-value" id="confirm-total">R$ 0,00</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="confirmation-warning">
+                                    <div class="warning-icon">⚠️</div>
+                                    <div class="warning-text">
+                                        <p><strong>Atenção:</strong> Verifique todos os dados antes de confirmar. Esta operação não pode ser desfeita.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="prev-btn" class="btn-secondary" style="display: none;">Voltar</button>
+                                <button type="button" id="next-btn" class="btn-primary">Continuar</button>
+                                <button type="submit" id="submit-btn" class="btn-withdraw" style="display: none;">
+                                    <span id="btn-text">Confirmar Saque</span>
+                                    <div class="btn-loading" style="display: none;">
+                                        <div class="spinner"></div>
+                                        Processando...
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="message" class="message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="withdraw.js"></script>
+</body>
+</html>
+
